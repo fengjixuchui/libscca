@@ -1,13 +1,13 @@
 #!/bin/bash
-# Tests C library functions and types.
+# Tests library functions and types.
 #
-# Version: 20190101
+# Version: 20200705
 
 EXIT_SUCCESS=0;
 EXIT_FAILURE=1;
 EXIT_IGNORE=77;
 
-LIBRARY_TESTS="compressed_block error file_information file_metrics filename_strings io_handle notify volume_information";
+LIBRARY_TESTS="compressed_block error file_header file_information file_metrics filename_strings io_handle notify volume_information";
 LIBRARY_TESTS_WITH_INPUT="file support";
 OPTION_SETS="";
 
@@ -129,7 +129,7 @@ run_test_with_input()
 	return ${RESULT};
 }
 
-if ! test -z ${SKIP_LIBRARY_TESTS};
+if test -n "${SKIP_LIBRARY_TESTS}";
 then
 	exit ${EXIT_IGNORE};
 fi
